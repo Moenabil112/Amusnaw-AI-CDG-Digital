@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "name": "aguelmous_smart_fault_demonstrator_public",
+  "metadata": {
+    "purpose": "Public-lite / institutional preview geospatial layer for the Amusnaw digital window.",
+    "displayName": "Aguelmous Smart Fault Demonstrator",
+    "productType": "AI-assisted exploration MVP",
+    "region": "Beni Mellal–Khénifra",
+    "geoContext": "Near the High Atlas influence zone",
+    "displayPolicy": "Do not use permit reference as product title. Permit number belongs only in detail drawer/metadata.",
+    "geometryPolicy": "Generalized context marker only. This is not a license boundary polygon.",
+    "sourceNote": "Generated from the documented PR3538746 center coordinates after CRS conversion; coordinates rounded for public-lite display."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "aguelmous-smart-fault-demonstrator-public-marker",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.04,
+          33.04
+        ]
+      },
+      "properties": {
+        "displayName": "Aguelmous Smart Fault Demonstrator",
+        "productName": "Aguelmous Smart Fault Demonstrator",
+        "productType": "AI-assisted exploration MVP",
+        "region": "Beni Mellal–Khénifra",
+        "geoContext": "Near the High Atlas influence zone",
+        "description_en": "A Moroccan smart exploration demonstrator located in the Beni Mellal–Khénifra region, near the High Atlas influence zone, designed to test fault-controlled polymetallic target intelligence through QASSAS and HYRION.",
+        "description_fr": "Un démonstrateur marocain d’exploration intelligente situé dans la région Béni Mellal–Khénifra, à proximité de la zone d’influence du Haut Atlas, conçu pour tester l’intelligence des cibles polymétalliques contrôlées par les structures à travers QASSAS et HYRION.",
+        "description_ar": "نموذج مغربي للاستكشاف الذكي داخل جهة بني ملال–خنيفرة، بالقرب من نطاق تأثير الأطلس الكبير، مصمم لاختبار استخبارات الأهداف متعددة المعادن المرتبطة بالفوالق عبر QASSAS وHYRION.",
+        "accessLevel": "public-lite",
+        "geometryStatus": "generalized_marker_not_boundary",
+        "permitReferenceVisibility": "detail_only"
+      }
+    }
+  ]
+}

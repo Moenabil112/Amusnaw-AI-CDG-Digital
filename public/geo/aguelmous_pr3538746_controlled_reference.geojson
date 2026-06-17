@@ -1,0 +1,104 @@
+{
+  "type": "FeatureCollection",
+  "name": "aguelmous_pr3538746_controlled_reference",
+  "metadata": {
+    "purpose": "Controlled / NDA geospatial reference layer for the Aguelmous Smart Fault Demonstrator.",
+    "displayName": "Aguelmous Smart Fault Demonstrator",
+    "permitReference": "PR3538746",
+    "permitReferenceDisplayPolicy": "Detail drawer / metadata only. Do not display permit reference as a main product title.",
+    "region": "Beni Mellal–Khénifra",
+    "geoContext": "Near the High Atlas influence zone",
+    "sourceCoordinateSystem": "EPSG:26191 — Merchich / Nord Maroc",
+    "conversionTarget": "EPSG:4326 — WGS84 lon/lat",
+    "sourceDocumentCoordinates": {
+      "center": {
+        "Xc_m": 440284.92,
+        "Yc_m": 272167.43
+      },
+      "pivot_laggida": {
+        "Xp_m": 443162.91,
+        "Yp_m": 270372.43
+      },
+      "distance_pivot_to_center": {
+        "north": "1795m N",
+        "west": "2878m W"
+      }
+    },
+    "geometryPolicy": "Point and reference line only. This file does not provide the legal license boundary polygon."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "aguelmous-pr3538746-center-controlled",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.037951204586965,
+          33.044694686150784
+        ]
+      },
+      "properties": {
+        "displayName": "Aguelmous Smart Fault Demonstrator",
+        "permitReference": "PR3538746",
+        "permitReferenceVisibility": "detail_only",
+        "productType": "R&D-ready Smart Exploration MVP",
+        "region": "Beni Mellal–Khénifra",
+        "geoContext": "Near the High Atlas influence zone",
+        "sourceCoordinateSystem": "EPSG:26191",
+        "sourceX_m": 440284.92,
+        "sourceY_m": 272167.43,
+        "pointRole": "documented_permit_center",
+        "accessLevel": "controlled_nda",
+        "geometryStatus": "center_point_not_boundary"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aguelmous-laggida-pivot-controlled",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.007017300731727,
+          33.02865903841
+        ]
+      },
+      "properties": {
+        "displayName": "Laggida Pivot Reference",
+        "permitReference": "PR3538746",
+        "permitReferenceVisibility": "detail_only",
+        "region": "Beni Mellal–Khénifra",
+        "sourceCoordinateSystem": "EPSG:26191",
+        "sourceX_m": 443162.91,
+        "sourceY_m": 270372.43,
+        "pointRole": "documented_pivot_reference",
+        "accessLevel": "controlled_nda",
+        "geometryStatus": "pivot_point_not_boundary"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aguelmous-pivot-to-center-reference-line",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -6.007017300731727,
+            33.02865903841
+          ],
+          [
+            -6.037951204586965,
+            33.044694686150784
+          ]
+        ]
+      },
+      "properties": {
+        "displayName": "Pivot-to-Center Reference",
+        "permitReference": "PR3538746",
+        "permitReferenceVisibility": "detail_only",
+        "distanceStatement": "Center located 1795m N and 2878m W from Laggida pivot, based on source document.",
+        "accessLevel": "controlled_nda",
+        "geometryStatus": "reference_line_not_boundary"
+      }
+    }
+  ]
+}

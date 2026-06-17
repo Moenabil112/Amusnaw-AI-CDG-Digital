@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset for sticky header when navigating to anchors */
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    @apply bg-graphite-900 text-ivory font-body antialiased;
+    background-image:
+      radial-gradient(
+        circle at 15% -10%,
+        rgba(184, 115, 51, 0.12),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 90% 0%,
+        rgba(31, 58, 50, 0.25),
+        transparent 40%
+      );
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-heading;
+  }
+
+  /* Trilingual-ready: when the document is set to Arabic, switch direction + font */
+  html[dir="rtl"] body {
+    @apply font-arabic;
+  }
+
+  ::selection {
+    background: rgba(201, 164, 106, 0.3);
+    color: #f3efe7;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .hairline {
+    @apply border-white/10;
+  }
+
+  .panel {
+    @apply rounded-xl border border-white/10 bg-graphite-800/60 backdrop-blur-sm;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-300 hover:border-sand/40 hover:bg-graphite-700/60;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-sand;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sand/60;
+  }
+
+  .btn-primary {
+    @apply btn bg-copper text-ivory hover:bg-copper/90;
+  }
+
+  .btn-secondary {
+    @apply btn border border-sand/40 bg-transparent text-ivory hover:border-sand hover:bg-sand/10;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/5 text-ivory/90 hover:border-white/30 hover:bg-white/10;
+  }
+}
+
+/* Thin custom scrollbar for a controlled, institutional feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 999px;
+  border: 2px solid #0b0b0b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a3d;
+}
