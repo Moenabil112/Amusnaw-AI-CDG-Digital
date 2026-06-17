@@ -6,15 +6,20 @@ import StatusBadge from "./StatusBadge";
 import AccessBadge from "./AccessBadge";
 import {
   documentCategories,
+  documentCategoryLabels,
   documents,
+  type DocCategory,
   type DocumentCard,
 } from "../data/documents";
 import { accessLevels } from "../data/accessLevels";
+import { useT } from "../i18n";
+import { S } from "../i18n/strings";
 
-const FILTERS = ["All", ...documentCategories] as const;
-type Filter = (typeof FILTERS)[number];
+type Filter = "All" | DocCategory;
+const FILTERS: Filter[] = ["All", ...documentCategories];
 
 export default function DocumentCenter() {
+  const tt = useT();
   const [filter, setFilter] = useState<Filter>("All");
   const [active, setActive] = useState<DocumentCard | null>(null);
 
@@ -26,6 +31,9 @@ export default function DocumentCenter() {
     [filter],
   );
 
+  const filterLabel = (f: Filter) =>
+    f === "All" ? tt(S.documents.all) : tt(documentCategoryLabels[f]);
+
   return (
     <section
       id="documents"
@@ -34,9 +42,9 @@ export default function DocumentCenter() {
       <div className="container-px">
         <Reveal>
           <SectionTitle
-            eyebrow="Document Center"
-            title="The controlled institutional document package"
-            description="Ten documents organized by category, status, and access level. Sensitive materials are not exposed by default — access is reviewed manually."
+            eyebrow={tt(S.documents.eyebrow)}
+            title={tt(S.documents.title)}
+            description={tt(S.documents.description)}
           />
         </Reveal>
 
@@ -53,7 +61,7 @@ export default function DocumentCenter() {
                     : "border-white/10 bg-white/5 text-ivory/55 hover:text-ivory/80"
                 }`}
               >
-                {f}
+                {filterLabel(f)}
               </button>
             ))}
           </div>
@@ -67,7 +75,7 @@ export default function DocumentCenter() {
               <Reveal key={doc.id} delay={(i % 3) * 0.05}>
                 <button
                   onClick={() => setActive(doc)}
-                  className="panel panel-hover flex h-full w-full flex-col p-5 text-left"
+                  className="panel panel-hover flex h-full w-full flex-col p-5 text-start"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2 text-ivory/40">
@@ -80,13 +88,13 @@ export default function DocumentCenter() {
                   </div>
 
                   <h3 className="mt-3 text-base font-semibold text-ivory">
-                    {doc.title}
+                    {tt(doc.title)}
                   </h3>
                   <p className="mt-0.5 text-xs font-medium text-ivory/45">
-                    {doc.category}
+                    {tt(documentCategoryLabels[doc.category])}
                   </p>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory/65">
-                    {doc.description}
+                    {tt(doc.description)}
                   </p>
 
                   <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -112,6 +120,7 @@ function DocModal({
   doc: DocumentCard;
   onClose: () => void;
 }) {
+  const tt = useT();
   const access = accessLevels[doc.access];
 
   return (
@@ -127,7 +136,7 @@ function DocModal({
       <div className="panel relative z-10 w-full max-w-lg p-7">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-md p-1.5 text-ivory/50 hover:bg-white/5 hover:text-ivory"
+          className="absolute end-4 top-4 rounded-md p-1.5 text-ivory/50 hover:bg-white/5 hover:text-ivory"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -136,11 +145,15 @@ function DocModal({
         <div className="flex items-center gap-2 text-ivory/40">
           <FileText className="h-5 w-5" />
           <span className="text-xs font-semibold uppercase tracking-wide">
-            Document {doc.number}
+            {tt(S.documents.document)} {doc.number}
           </span>
         </div>
-        <h3 className="mt-3 pr-8 text-xl font-bold text-ivory">{doc.title}</h3>
-        <p className="mt-1 text-sm text-ivory/50">{doc.category}</p>
+        <h3 className="mt-3 pe-8 text-xl font-bold text-ivory">
+          {tt(doc.title)}
+        </h3>
+        <p className="mt-1 text-sm text-ivory/50">
+          {tt(documentCategoryLabels[doc.category])}
+        </p>
 
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <StatusBadge status={doc.status} />
@@ -148,16 +161,16 @@ function DocModal({
         </div>
 
         <p className="mt-4 text-sm leading-relaxed text-ivory/70">
-          {doc.description}
+          {tt(doc.description)}
         </p>
 
         <div className="mt-5 rounded-lg border border-white/10 bg-graphite-900/50 p-4">
           <div className="flex items-center gap-2 text-sm font-semibold text-ivory/80">
-            <Lock className="h-4 w-4 text-sand" /> Access: {access.label}
+            <Lock className="h-4 w-4 text-sand" /> {tt(S.documents.access)}:{" "}
+            {tt(access.label)}
           </div>
           <p className="mt-1.5 text-xs leading-relaxed text-ivory/55">
-            {access.description} This document is held in the controlled package;
-            preview and download are released on approval.
+            {tt(access.description)} {tt(S.documents.modalNote)}
           </p>
         </div>
 
@@ -166,20 +179,18 @@ function DocModal({
             type="button"
             disabled
             className="btn flex-1 cursor-not-allowed border border-white/10 bg-white/5 text-ivory/45"
-            title="Preview released on approval"
           >
-            <Eye className="h-4 w-4" /> Preview
+            <Eye className="h-4 w-4" /> {tt(S.documents.preview)}
           </button>
           <button
             type="button"
             disabled
             className="btn flex-1 cursor-not-allowed border border-white/10 bg-white/5 text-ivory/45"
-            title="Download released on approval"
           >
-            <Download className="h-4 w-4" /> Download
+            <Download className="h-4 w-4" /> {tt(S.documents.download)}
           </button>
           <a href="#access" onClick={onClose} className="btn-primary flex-1">
-            Request Access
+            {tt(S.common.requestAccess)}
           </a>
         </div>
       </div>

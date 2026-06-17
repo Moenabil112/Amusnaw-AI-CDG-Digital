@@ -4,16 +4,19 @@ import Reveal from "./Reveal";
 import StatusBadge from "./StatusBadge";
 import AccessBadge from "./AccessBadge";
 import { products } from "../data/products";
+import { useT } from "../i18n";
+import { S } from "../i18n/strings";
 
 export default function LaunchProducts() {
+  const tt = useT();
   return (
     <section id="products" className="border-t border-white/5 py-20 sm:py-28">
       <div className="container-px">
         <Reveal>
           <SectionTitle
-            eyebrow="Launch Products"
-            title="Two ready products at launch"
-            description="A balanced launch portfolio: one ready mining intelligence product and one disciplined R&D exploration demonstrator."
+            eyebrow={tt(S.products.eyebrow)}
+            title={tt(S.products.title)}
+            description={tt(S.products.description)}
           />
         </Reveal>
 
@@ -26,7 +29,7 @@ export default function LaunchProducts() {
                   <AccessBadge access={p.accessKey} />
                   {p.partner && (
                     <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ivory/60">
-                      Partner: {p.partner}
+                      {tt(S.common.partner)}: {p.partner}
                     </span>
                   )}
                 </div>
@@ -34,17 +37,17 @@ export default function LaunchProducts() {
                 <h3 className="text-2xl font-bold tracking-tight text-ivory">
                   {p.name}
                 </h3>
-                <p className="mt-1 text-sm font-medium text-sand">{p.type}</p>
+                <p className="mt-1 text-sm font-medium text-sand">{tt(p.type)}</p>
 
                 <p className="mt-4 text-sm leading-relaxed text-ivory/70">
-                  {p.coreValue}
+                  {tt(p.coreValue)}
                 </p>
 
                 <a
                   href={`#${p.sectionId}`}
                   className="btn-secondary mt-7 self-start"
                 >
-                  {p.cta} <ArrowRight className="h-4 w-4" />
+                  {tt(p.cta)} <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
             </Reveal>

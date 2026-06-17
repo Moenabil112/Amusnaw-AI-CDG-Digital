@@ -1,4 +1,8 @@
+import { entity } from "../data/entity";
+import { useT } from "../i18n";
+
 export default function Wordmark({ compact = false }: { compact?: boolean }) {
+  const tt = useT();
   return (
     <div className="flex items-center gap-3">
       <svg
@@ -26,11 +30,11 @@ export default function Wordmark({ compact = false }: { compact?: boolean }) {
       </svg>
       <div className="leading-tight">
         <p className="font-heading text-base font-bold tracking-tight text-ivory">
-          Amusnaw AI SA
+          {entity.name}
         </p>
         {!compact && (
           <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-ivory/50">
-            Moroccan Mining-Tech Data Infrastructure SPV
+            {tt(entity.type)}
           </p>
         )}
       </div>

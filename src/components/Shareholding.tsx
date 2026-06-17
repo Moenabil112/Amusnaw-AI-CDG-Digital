@@ -8,8 +8,11 @@ import {
   shareholdingLegalNote,
   stepUpPathway,
 } from "../data/shareholding";
+import { useT } from "../i18n";
+import { S } from "../i18n/strings";
 
 export default function Shareholding() {
+  const tt = useT();
   return (
     <section
       id="shareholding"
@@ -18,8 +21,8 @@ export default function Shareholding() {
       <div className="container-px">
         <Reveal>
           <SectionTitle
-            eyebrow="Shareholding & Step-Up Pathway"
-            title="Structured for staged CDG step-up acquisition"
+            eyebrow={tt(S.shareholding.eyebrow)}
+            title={tt(S.shareholding.title)}
           />
         </Reveal>
 
@@ -28,13 +31,13 @@ export default function Shareholding() {
           <Reveal>
             <div className="panel h-full p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-ivory/60">
-                Post-Seed Allocation
+                {tt(S.shareholding.postSeed)}
               </p>
               <div className="mt-5 space-y-4">
                 {postSeedShareholding.map((row) => (
-                  <div key={row.party}>
+                  <div key={row.party.en}>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-ivory/80">{row.party}</span>
+                      <span className="text-ivory/80">{tt(row.party)}</span>
                       <span className="font-semibold text-ivory">
                         {row.allocation}
                       </span>
@@ -58,26 +61,26 @@ export default function Shareholding() {
                 <div className="mb-4 inline-flex items-center gap-2 text-sand">
                   <TrendingUp className="h-5 w-5" />
                   <span className="text-sm font-semibold uppercase tracking-wide">
-                    Step-Up Pathway
+                    {tt(S.shareholding.stepUp)}
                   </span>
                 </div>
                 <div className="space-y-3">
                   {stepUpPathway.map((s) => (
                     <div
-                      key={s.stage}
+                      key={s.stage.en}
                       className="flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm"
                     >
                       <span className="font-medium text-ivory/80">
-                        {s.stage}
+                        {tt(s.stage)}
                       </span>
                       <span className="font-semibold text-copper">
-                        {s.position}
+                        {tt(s.position)}
                       </span>
                     </div>
                   ))}
                 </div>
                 <p className="mt-4 text-xs leading-relaxed text-ivory/55">
-                  {founderContinuityNote}
+                  {tt(founderContinuityNote)}
                 </p>
               </div>
             </Reveal>
@@ -87,16 +90,16 @@ export default function Shareholding() {
                 <div className="mb-4 inline-flex items-center gap-2 text-copper">
                   <Scale className="h-5 w-5" />
                   <span className="text-sm font-semibold uppercase tracking-wide">
-                    Seed Use of Funds — USD 350,000
+                    {tt(S.shareholding.seedUse)}
                   </span>
                 </div>
                 <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-1">
                   {seedBudget.map((b) => (
                     <li
-                      key={b.item}
+                      key={b.item.en}
                       className="flex items-center justify-between gap-4 border-b border-white/5 py-1.5 text-xs last:border-0"
                     >
-                      <span className="text-ivory/65">{b.item}</span>
+                      <span className="text-ivory/65">{tt(b.item)}</span>
                       <span className="flex-shrink-0 font-semibold text-ivory/90">
                         {b.amount}
                       </span>
@@ -110,7 +113,7 @@ export default function Shareholding() {
 
         <Reveal>
           <p className="mt-6 rounded-lg border border-white/10 bg-white/5 px-5 py-4 text-xs italic leading-relaxed text-ivory/55">
-            {shareholdingLegalNote}
+            {tt(shareholdingLegalNote)}
           </p>
         </Reveal>
       </div>

@@ -6,12 +6,13 @@ import type { LocalizedText } from "../i18n";
  */
 export const entity = {
   name: "Amusnaw AI SA",
-  type: "Moroccan Mining-Tech Data Infrastructure SPV",
-  meaning: "Amusnaw — “the wise one” in Amazigh",
+  type: {
+    en: "Moroccan Mining-Tech Data Infrastructure SPV",
+    ar: "شركة مغربية (SPV) للبنية التحتية لبيانات التعدين — Mining-Tech",
+    fr: "SPV marocaine d'infrastructure de données minières — Mining-Tech",
+  } satisfies LocalizedText,
   seedCommitment: "USD 350,000",
-  seedCommitmentLabel: "Seed Infrastructure Commitment",
   strategicPartner: "CDG",
-  founderRole: "Mining-Tech Originator & Field Intelligence Architect",
   tagline: {
     en: "Co-building Morocco's digital and governance infrastructure for intelligent mining data.",
     ar: "بناء مشترك للبنية التحتية الرقمية والتنظيمية لبيانات التعدين الذكي في المغرب.",
@@ -24,49 +25,37 @@ export const entity = {
   } satisfies LocalizedText,
 } as const;
 
-export const heroBadges: { label: string; emphasis?: boolean }[] = [
-  { label: "Seed Infrastructure Commitment: USD 350,000", emphasis: true },
-  { label: "CDG Strategic Co-Building Pathway" },
-  { label: "Controlled Institutional Digital Window" },
+export const heroBadges: { label: LocalizedText; emphasis?: boolean }[] = [
+  {
+    label: {
+      en: "Seed Infrastructure Commitment: USD 350,000",
+      ar: "التزام بنية تحتية تأسيسي: 350,000 دولار أمريكي",
+      fr: "Engagement d'infrastructure d'amorçage : 350 000 USD",
+    },
+    emphasis: true,
+  },
+  {
+    label: {
+      en: "CDG Strategic Co-Building Pathway",
+      ar: "مسار البناء الاستراتيجي المشترك مع CDG",
+      fr: "Parcours de co-construction stratégique avec la CDG",
+    },
+  },
+  {
+    label: {
+      en: "Controlled Institutional Digital Window",
+      ar: "نافذة رقمية مؤسسية مضبوطة",
+      fr: "Fenêtre numérique institutionnelle contrôlée",
+    },
+  },
 ];
 
 /** Contact endpoint used by the access request (mailto fallback, no backend). */
 export const contact = {
-  email: "contact@amusnaw.ai",
-  reviewNote:
-    "Access is reviewed manually for institutional purposes. This is a controlled institutional digital window, not a public offering.",
+  email: "akanil.consulting@proton.me",
+  reviewNote: {
+    en: "Access is reviewed manually for institutional purposes. This is a controlled institutional digital window, not a public offering.",
+    ar: "تتم مراجعة الوصول يدويًا لأغراض مؤسسية. هذه نافذة رقمية مؤسسية مضبوطة، وليست عرضًا عامًا.",
+    fr: "L'accès est examiné manuellement à des fins institutionnelles. Il s'agit d'une fenêtre numérique institutionnelle contrôlée, et non d'une offre publique.",
+  } satisfies LocalizedText,
 };
-
-/** The five founding contribution layers. Source: memo §6 / context §9. */
-export const foundingLayers: {
-  contributor: string;
-  layer: string;
-  value: string;
-}[] = [
-  {
-    contributor: "AKANIL",
-    layer: "IP, field intelligence & knowledge transfer",
-    value:
-      "Moroccan anchoring, African field intelligence, trust architecture, HYRION/QASSAS knowledge context.",
-  },
-  {
-    contributor: "Atlas Mining",
-    layer: "Mining operating & field partner",
-    value: "22 years of mining experience across more than four countries.",
-  },
-  {
-    contributor: "ZYNTRA Deeptech",
-    layer: "Saudi AI product layer",
-    value: "Deeptech architecture, AI product logic, scalable software.",
-  },
-  {
-    contributor: "QASSAS",
-    layer: "Exploration intelligence",
-    value: "Fault intelligence, geochemical interpretation, field-data ranking.",
-  },
-  {
-    contributor: "HYRION",
-    layer: "Evidence governance",
-    value: "Data registry, permissions, decision gates, acquisition readiness.",
-  },
-];

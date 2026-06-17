@@ -23,7 +23,8 @@ It is a **controlled institutional digital window** — not a public website, fu
     ├── App.tsx                # Section composition root
     ├── index.css              # Tailwind layers + design system primitives
     ├── i18n/
-    │   └── index.tsx          # Trilingual-ready language provider (EN default, AR/FR wired)
+    │   ├── index.tsx          # Language provider (localStorage + dynamic lang/dir), t() / useT()
+    │   └── strings.ts         # EN/AR/FR UI chrome dictionary (LocalizedText)
     ├── data/                  # Typed content — single source of truth for the UI
     │   ├── entity.ts
     │   ├── nav.ts
@@ -131,20 +132,22 @@ real authentication, role-based access, an evidence registry (the `EvidenceItem`
 
 ---
 
-## 7. Preparing Arabic & French translations later
+## 7. Trilingual interface (EN / AR / FR)
 
-The app is **trilingual-ready** (EN default) and structured so AR/FR can be added without rebuilding:
+The interface is **fully trilingual** — English (default), Arabic (RTL), and French (formal institutional wording). There is no mixed-language or partial content: every user-visible string is translated in all three languages.
 
-- `src/i18n/index.tsx` provides `LanguageProvider`, `useLanguage()`, and the `t()` helper. Selecting **AR** automatically flips `dir="rtl"` and switches to the Arabic font (Cairo); the Tailwind base layer handles RTL.
-- Localizable copy uses the `LocalizedText` type (`{ en, ar?, fr? }`) — see `entity.tagline` / `entity.supporting`. `t(value, locale)` falls back to English when a translation is missing.
-- To translate: add `ar` / `fr` fields to existing `LocalizedText` values, or migrate static strings in the `data/` files to `LocalizedText` and wrap their render sites in `t(...)`. The **EN | AR | FR** switcher in the header is already wired.
+- `src/i18n/index.tsx` provides `LanguageProvider`, `useLanguage()`, the `t()` resolver, and the `useT()` hook. The selected language is **persisted in `localStorage`** (`amusnaw.locale`) and restored on load; `document.lang` and `document.dir` are set dynamically.
+- Selecting **AR** flips the document to `dir="rtl"` and switches to the Arabic font (Cairo). Components use logical CSS utilities (`ps/pe`, `ms/me`, `start/end`, `text-start/text-end`) so layout mirrors correctly.
+- Static UI chrome lives in `src/i18n/strings.ts` as `LocalizedText` (`{ en, ar, fr }`); structured content (modules, cards, roadmap, documents) is translated inline in the `src/data/*` files.
+- Brand/defined terms are intentionally kept canonical across all languages: Amusnaw AI SA, CDG, HYRION, QASSAS, Isseksi, PR3538746, Atlas Mining, ZYNTRA, AKANIL, GIS/IP/AI/MVP/R&D, USD figures, and element symbols.
+- A completeness check (EN=AR=FR counts per file) is part of the pre-deploy checklist; `t(value, locale)` still falls back to English if a field is ever left blank.
 
 ---
 
 ## 8. Assumptions made
 
-- **English is the v0.1 display language.** Arabic/French structures are wired but content is intentionally not fully translated (per the brief).
-- **Placeholder contact:** `contact@amusnaw.ai` in `src/data/entity.ts`. Update before any real use — the access form opens a pre-filled `mailto:` and stores nothing.
+- **English is the default display language**, with Arabic (RTL) and French fully translated. The selected language persists across visits via `localStorage`.
+- **Contact:** `akanil.consulting@proton.me` in `src/data/entity.ts`. The access form opens a pre-filled `mailto:` to this address and stores nothing (no backend).
 - **No backend / no analytics.** The page is marked `noindex,nofollow` to reinforce its controlled (non-public) nature.
 - **GIS, product room, and document preview/download are intentionally locked placeholders** — no sensitive data is exposed.
 - **Content is drawn strictly from the approved package.** Figures (USD 350,000 seed, 30% CDG, step-up 51%/85%, 15% continuity stake, cap table, roadmap, budget) mirror the source documents and remain subject to legal review.

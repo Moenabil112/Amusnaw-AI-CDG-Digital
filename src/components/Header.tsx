@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Wordmark from "./Wordmark";
 import { navItems } from "../data/nav";
-import { LOCALES, useLanguage } from "../i18n";
+import { LOCALES, useLanguage, useT } from "../i18n";
+import { S } from "../i18n/strings";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("overview");
   const { locale, setLocale } = useLanguage();
+  const tt = useT();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -61,7 +63,7 @@ export default function Header() {
                   : "text-ivory/65 hover:text-ivory"
               }`}
             >
-              {item.label}
+              {tt(item.label)}
             </a>
           ))}
         </nav>
@@ -74,11 +76,7 @@ export default function Header() {
                 key={l.code}
                 onClick={() => setLocale(l.code)}
                 aria-pressed={locale === l.code}
-                title={
-                  l.code === "en"
-                    ? "English"
-                    : "Translation structure ready — content pending"
-                }
+                title={l.name}
                 className={`rounded px-2 py-1 text-[11px] font-semibold transition-colors ${
                   locale === l.code
                     ? "bg-sand/20 text-sand"
@@ -91,7 +89,7 @@ export default function Header() {
           </div>
 
           <a href="#access" className="hidden btn-primary sm:inline-flex">
-            Request Access
+            {tt(S.common.requestAccess)}
           </a>
 
           <button
@@ -119,7 +117,7 @@ export default function Header() {
                     : "text-ivory/70 hover:bg-white/5"
                 }`}
               >
-                {item.label}
+                {tt(item.label)}
               </a>
             ))}
             <a
@@ -127,7 +125,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className="btn-primary col-span-2 mt-2"
             >
-              Request Institutional Access
+              {tt(S.common.requestInstitutionalAccess)}
             </a>
           </nav>
         </div>
