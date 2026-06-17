@@ -157,10 +157,42 @@ export const S = {
       ar: "طلب مراجعة النموذج",
       fr: "Demander l'examen du démonstrateur",
     },
-    mapPending: {
-      en: "GeoJSON layer pending controlled data import",
-      ar: "طبقة GeoJSON في انتظار استيراد بيانات مضبوطة",
-      fr: "Couche GeoJSON en attente d'import de données contrôlées",
+    publicLayer: {
+      en: "Public-lite marker layer · GeoJSON",
+      ar: "طبقة معلّم عامة مبسّطة · GeoJSON",
+      fr: "Couche de repère public · GeoJSON",
+    },
+    boundaryNote: {
+      en: "Legal boundary polygon not included; public-lite marker/context layer used.",
+      ar: "لم يُدرَج مضلّع الحدود القانونية؛ تُستخدم طبقة معلّم/سياق عامة مبسّطة.",
+      fr: "Polygone de limite légale non inclus ; couche de repère/contexte public utilisée.",
+    },
+    mapLoading: {
+      en: "Loading geospatial layer…",
+      ar: "جارٍ تحميل الطبقة الجيومكانية…",
+      fr: "Chargement de la couche géospatiale…",
+    },
+    mapError: {
+      en: "Geospatial layer unavailable.",
+      ar: "الطبقة الجيومكانية غير متاحة.",
+      fr: "Couche géospatiale indisponible.",
+    },
+    ctrlTitle: {
+      en: "Controlled reference geometry",
+      ar: "هندسة مرجعية مضبوطة",
+      fr: "Géométrie de référence contrôlée",
+    },
+    ctrlCenter: { en: "Permit center", ar: "مركز الرخصة", fr: "Centre du permis" },
+    ctrlPivot: { en: "Laggida pivot", ar: "محور لاگيدا", fr: "Pivot Laggida" },
+    ctrlRefLine: {
+      en: "Pivot-to-center reference",
+      ar: "مرجع من المحور إلى المركز",
+      fr: "Référence pivot–centre",
+    },
+    ctrlNote: {
+      en: "Center located 1795 m N and 2878 m W of the Laggida pivot (source document). Converted EPSG:26191 → WGS84.",
+      ar: "يقع المركز على بُعد 1795 م شمالًا و2878 م غربًا من محور لاگيدا (حسب الوثيقة المصدر). تحويل EPSG:26191 ← WGS84.",
+      fr: "Centre situé à 1795 m N et 2878 m O du pivot Laggida (document source). Conversion EPSG:26191 → WGS84.",
     },
     regionContext: { en: "Region context", ar: "السياق الجهوي", fr: "Contexte régional" },
     viewDetails: {

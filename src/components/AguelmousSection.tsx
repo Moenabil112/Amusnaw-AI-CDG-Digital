@@ -12,7 +12,7 @@ import SectionTitle from "./SectionTitle";
 import Reveal from "./Reveal";
 import StatusBadge from "./StatusBadge";
 import AccessBadge from "./AccessBadge";
-import AguelmousMap from "./AguelmousMap";
+import AguelmousMap, { ControlledReferenceMap } from "./AguelmousMap";
 import {
   aguelmous,
   aguelmousCaution,
@@ -113,6 +113,12 @@ export default function AguelmousSection() {
                   ))}
                   <div className="py-2.5">
                     <AccessBadge access="nda" />
+                  </div>
+                  <div className="py-3">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-sand">
+                      {tt(S.aguelmous.ctrlTitle)}
+                    </p>
+                    <ControlledReferenceMap />
                   </div>
                 </dl>
               )}

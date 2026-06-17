@@ -31,7 +31,7 @@ It is a **controlled institutional digital window** — not a public website, fu
     │   ├── products.ts
     │   ├── isseksi.ts
     │   ├── aguelmous.ts       # Aguelmous (PR3538746) demonstrator content + metadata
-    │   ├── aguelmousGeo.ts    # GeoJSON layer (null placeholder — no invented boundaries)
+    │   ├── aguelmousGeo.ts    # GeoJSON loader + URLs (public/geo) + boundary check
     │   ├── hyrionFunctions.ts
     │   ├── qassasModules.ts
     │   ├── strategicThesis.ts
@@ -47,7 +47,7 @@ It is a **controlled institutional digital window** — not a public website, fu
         ├── LaunchProducts.tsx
         ├── IsseksiSection.tsx
         ├── AguelmousSection.tsx   # map-left / narrative-right + access-gated metadata drawer
-        ├── AguelmousMap.tsx       # lightweight SVG GeoJSON renderer + region-context placeholder
+        ├── AguelmousMap.tsx       # SVG GeoJSON renderer (public layer) + controlled NDA reference view
         ├── Tilt.tsx               # desktop-only 3D card tilt (disabled on touch / reduced-motion)
         ├── ScrollProgress.tsx     # scroll-progress indicator
         ├── HyrionSection.tsx
@@ -114,7 +114,12 @@ The Document Center renders cards, category filters, status/access badges, and a
 
 Edit `src/data/products.ts`. Each product drives the **Launch Products** cards and links to its dedicated section. The deep sections pull copy from `src/data/isseksi.ts` and `src/data/aguelmous.ts` — edit those to change the feature cards, modules, outputs, validation phases, and Aguelmous map metadata. No component code changes required.
 
-**Aguelmous map / GeoJSON:** there is no verified GeoJSON for permit PR3538746 in the repo or source package, so the map renders a region-context placeholder marked *"GeoJSON layer pending controlled data import"* — no boundaries are invented. To activate the real layer, drop the controlled `FeatureCollection` into `src/data/aguelmousGeo.ts` (assign `aguelmousGeoJson`); `AguelmousMap.tsx` already projects Polygon/MultiPolygon/Point/LineString geometry into its SVG viewbox — no component change needed. The permit number appears only in the access-gated metadata drawer / detail badge.
+**Aguelmous map / GeoJSON:** the controlled GeoJSON pack ships in `public/geo/` and is loaded at runtime by `AguelmousMap.tsx` (no tile dependency — offline-safe, no coordinate leakage):
+
+- `aguelmous_smart_fault_demonstrator_public.geojson` → the visible **public-lite** layer (a generalized marker, GeoJSON-driven).
+- `aguelmous_pr3538746_controlled_reference.geojson` → the **controlled / NDA** reference view (permit center, Laggida pivot, pivot→center line), shown only inside the access-gated detail drawer.
+
+Neither file contains a legal license boundary polygon (the pack provides point/line context only), so **no boundaries are invented** and the UI states: *"Legal boundary polygon not included; public-lite marker/context layer used."* If a boundary `Polygon`/`MultiPolygon` is added to either file later, the renderer already projects and draws it — no component change needed. The permit number (PR3538746) appears only in the access-gated metadata drawer / detail badge.
 
 ---
 
@@ -155,5 +160,6 @@ The interface is **fully trilingual** — English (default), Arabic (RTL), and F
 - **English is the default display language**, with Arabic (RTL) and French fully translated. The selected language persists across visits via `localStorage`.
 - **Contact:** `akanil.consulting@proton.me` in `src/data/entity.ts`. The access form opens a pre-filled `mailto:` to this address and stores nothing (no backend).
 - **No backend / no analytics.** The page is marked `noindex,nofollow` to reinforce its controlled (non-public) nature.
-- **GIS, product room, and document preview/download are intentionally locked placeholders** — no sensitive data is exposed.
+- **Aguelmous map is GeoJSON-driven** from `public/geo/` (public-lite marker visible; controlled center/pivot/line in the NDA drawer). The pack contains **no legal boundary polygon**, so the map uses the public-lite marker/context layer and says so — no boundaries are invented.
+- **Isseksi GIS panel, product room, and document preview/download remain intentionally locked placeholders** — no sensitive data is exposed.
 - **Content is drawn strictly from the approved package.** Figures (USD 350,000 seed, 30% CDG, step-up 51%/85%, 15% continuity stake, cap table, roadmap, budget) mirror the source documents and remain subject to legal review.
