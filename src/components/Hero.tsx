@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, FileText, Boxes } from "lucide-react";
 import { entity, heroBadges } from "../data/entity";
 import { useT } from "../i18n";
@@ -6,18 +7,37 @@ import { S } from "../i18n/strings";
 
 export default function Hero() {
   const tt = useT();
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  // Subtle parallax: background drifts/fades as the hero scrolls away.
+  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
+  const fade = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
   return (
     <section
       id="overview"
-      className="relative overflow-hidden pt-[112px] pb-20 sm:pt-[140px] sm:pb-28"
+      ref={ref}
+      className="relative overflow-hidden pt-[120px] pb-20 sm:pt-[150px] sm:pb-28"
     >
-      {/* Faint engineering grid + copper seam accents */}
-      <div className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:48px_48px] opacity-40" />
-      <div className="pointer-events-none absolute -right-32 top-10 h-72 w-72 rounded-full bg-copper/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-24 top-40 h-72 w-72 rounded-full bg-forest/20 blur-3xl" />
+      {/* Parallax engineering grid + copper/forest seams */}
+      <motion.div
+        style={{ y: gridY, opacity: fade }}
+        className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:48px_48px] opacity-40"
+      />
+      <motion.div
+        style={{ opacity: fade }}
+        className="pointer-events-none absolute -end-32 top-10 h-72 w-72 rounded-full bg-copper/10 blur-3xl"
+      />
+      <motion.div
+        style={{ opacity: fade }}
+        className="pointer-events-none absolute -start-24 top-40 h-72 w-72 rounded-full bg-forest/20 blur-3xl"
+      />
 
-      <div className="container-px relative">
+      <motion.div style={{ y: contentY }} className="container-px relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,23 +49,27 @@ export default function Hero() {
             {tt(S.hero.badge)}
           </div>
 
-          <h1 className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-ivory sm:text-6xl md:text-7xl">
-            {entity.name}
+          {/* Brand is the title; AI/SA live in the muted legal line below. */}
+          <h1 className="font-heading text-6xl font-extrabold leading-[0.95] tracking-tight text-ivory sm:text-7xl md:text-8xl">
+            {entity.brandName}
           </h1>
-          <p className="mt-4 text-lg font-medium text-sand sm:text-xl">
-            {tt(entity.type)}
+          <p className="mt-3 text-lg font-semibold text-sand sm:text-2xl">
+            {tt(entity.displayDescriptor)}
+          </p>
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-ivory/45 sm:text-sm">
+            {tt(entity.heroLegalLine)}
           </p>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/80 sm:text-xl">
-            {tt(entity.tagline)}
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ivory/80 sm:text-xl">
+            {tt(entity.heroMessage)}
           </p>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-ivory/55">
-            {tt(entity.supporting)}
+            {tt(entity.heroProof)}
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href="#cdg-entry" className="btn-primary">
-              {tt(S.hero.reviewCdg)} <ArrowRight className="h-4 w-4" />
+              {tt(S.hero.reviewCdg)} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
             </a>
             <a href="#products" className="btn-secondary">
               <Boxes className="h-4 w-4" /> {tt(S.hero.viewProducts)}
@@ -56,11 +80,11 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-3">
+          <div className="mt-12 flex flex-wrap gap-2.5">
             {heroBadges.map((b) => (
               <div
                 key={b.label.en}
-                className={`rounded-lg border px-4 py-2.5 text-sm font-medium ${
+                className={`rounded-lg border px-3.5 py-2 text-xs font-medium sm:text-sm ${
                   b.emphasis
                     ? "border-copper/40 bg-copper/10 text-copper"
                     : "border-white/10 bg-white/5 text-ivory/70"
@@ -71,7 +95,7 @@ export default function Hero() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

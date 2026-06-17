@@ -1,21 +1,57 @@
 import type { LocalizedText } from "../i18n";
 
-/** Source: 06_PR3538746_SMART_FAULT_MVP_SHEET.md. */
+/**
+ * Source: 06_PR3538746_SMART_FAULT_MVP_SHEET.md.
+ *
+ * Presented product-first as the "Aguelmous Smart Fault Demonstrator". The
+ * permit reference (PR3538746) is confined to the metadata drawer / detail
+ * fields — never a headline.
+ */
 
-export const pr3538746Message: LocalizedText = {
-  en: "PR3538746 is not presented as a proven mineral asset. It is presented as a disciplined smart exploration MVP for AI-assisted fault-controlled target generation.",
-  ar: "لا يُقدَّم PR3538746 كأصل معدني مثبت، بل كنموذج MVP منضبط للاستكشاف الذكي لتوليد أهداف يتحكم فيها الفالق بمساعدة الذكاء الاصطناعي.",
-  fr: "PR3538746 n'est pas présenté comme un actif minéral prouvé, mais comme un MVP d'exploration intelligente discipliné pour la génération de cibles contrôlées par les failles, assistée par IA.",
+/** Identity / metadata used by the map section and detail drawer. */
+export const aguelmous = {
+  id: "aguelmous",
+  displayName: "Aguelmous Smart Fault Demonstrator",
+  permitReference: "PR3538746",
+  region: "Beni Mellal–Khénifra",
+  geoContext: {
+    en: "Near the High Atlas influence zone",
+    ar: "بالقرب من نطاق تأثير الأطلس الكبير",
+    fr: "À proximité de la zone d'influence du Haut Atlas",
+  } satisfies LocalizedText,
+  typeLabel: {
+    en: "R&D-ready Smart Exploration MVP",
+    ar: "نموذج MVP للاستكشاف الذكي جاهز للبحث والتطوير",
+    fr: "Démonstrateur d'exploration intelligente prêt pour la R&D",
+  } satisfies LocalizedText,
+  /** Concise location description for the map narrative. */
+  locationDescription: {
+    en: "Located in the Beni Mellal–Khénifra region, near the High Atlas influence zone, the Aguelmous demonstrator is positioned as a Moroccan smart exploration case for fault-controlled polymetallic target intelligence.",
+    ar: "يقع نموذج أگلموس داخل جهة بني ملال–خنيفرة، بالقرب من نطاق تأثير الأطلس الكبير، ويُقدَّم كحالة مغربية للاستكشاف الذكي للأهداف متعددة المعادن المرتبطة بالفوالق والبنيات الجيولوجية.",
+    fr: "Situé dans la région Béni Mellal–Khénifra, à proximité de la zone d'influence du Haut Atlas, le démonstrateur d'Aguelmous est présenté comme un cas marocain d'exploration intelligente des cibles polymétalliques contrôlées par les structures.",
+  } satisfies LocalizedText,
+  /** Short section narrative (right column). */
+  sectionNarrative: {
+    en: "A Moroccan R&D-ready smart exploration demonstrator located in the Beni Mellal–Khénifra region, near the High Atlas influence zone, designed to test fault-controlled polymetallic target intelligence through QASSAS and HYRION.",
+    ar: "نموذج مغربي للاستكشاف الذكي جاهز للبحث والتطوير يقع في جهة بني ملال–خنيفرة، بالقرب من نطاق تأثير الأطلس الكبير، مُصمَّم لاختبار استخبارات الأهداف متعددة المعادن المرتبطة بالفوالق عبر QASSAS وHYRION.",
+    fr: "Un démonstrateur marocain d'exploration intelligente prêt pour la R&D, situé dans la région Béni Mellal–Khénifra, à proximité de la zone d'influence du Haut Atlas, conçu pour tester l'intelligence des cibles polymétalliques contrôlées par les failles via QASSAS et HYRION.",
+  } satisfies LocalizedText,
+} as const;
+
+export const aguelmousMessage: LocalizedText = {
+  en: "Aguelmous is not presented as a proven mineral asset. It is presented as a disciplined smart exploration demonstrator for AI-assisted fault-controlled target generation.",
+  ar: "لا يُقدَّم أگلموس كأصل معدني مثبت، بل كنموذج منضبط للاستكشاف الذكي لتوليد أهداف يتحكم فيها الفالق بمساعدة الذكاء الاصطناعي.",
+  fr: "Aguelmous n'est pas présenté comme un actif minéral prouvé, mais comme un démonstrateur d'exploration intelligente discipliné pour la génération de cibles contrôlées par les failles, assistée par IA.",
 };
 
-export const pr3538746Caution: LocalizedText = {
-  en: "This MVP does not claim a proven resource, guaranteed discovery, or immediate mine development.",
-  ar: "لا يدّعي هذا الـ MVP وجود مورد مثبت أو اكتشاف مضمون أو تطوير منجم فوري.",
-  fr: "Ce MVP ne revendique aucune ressource prouvée, aucune découverte garantie, ni développement minier immédiat.",
+export const aguelmousCaution: LocalizedText = {
+  en: "This demonstrator does not claim a proven resource, guaranteed discovery, or immediate mine development.",
+  ar: "لا يدّعي هذا النموذج وجود مورد مثبت أو اكتشاف مضمون أو تطوير منجم فوري.",
+  fr: "Ce démonstrateur ne revendique aucune ressource prouvée, aucune découverte garantie, ni développement minier immédiat.",
 };
 
-/** QASSAS modules exercised by the MVP. */
-export const pr3538746Modules: LocalizedText[] = [
+/** QASSAS modules exercised by the demonstrator. */
+export const aguelmousModules: LocalizedText[] = [
   { en: "Fault Corridor Intelligence", ar: "ذكاء ممرات الفوالق", fr: "Intelligence des couloirs de failles" },
   { en: "Drainage Backtracking", ar: "التتبّع العكسي للتصريف", fr: "Remontée des drainages" },
   {
@@ -30,8 +66,8 @@ export const pr3538746Modules: LocalizedText[] = [
   { en: "Field Evidence Capture", ar: "التقاط الأدلة الميدانية", fr: "Saisie des preuves de terrain" },
 ];
 
-/** Expected MVP outputs. */
-export const pr3538746Outputs: LocalizedText[] = [
+/** Expected demonstrator outputs. */
+export const aguelmousOutputs: LocalizedText[] = [
   { en: "Target Book", ar: "دفتر الأهداف", fr: "Target Book" },
   { en: "Fault Corridor Ranking", ar: "ترتيب ممرات الفوالق", fr: "Classement des couloirs de failles" },
   {
@@ -56,7 +92,7 @@ export type ValidationPhase = {
   items: LocalizedText[];
 };
 
-export const pr3538746Validation: ValidationPhase[] = [
+export const aguelmousValidation: ValidationPhase[] = [
   {
     window: { en: "Days 1–30", ar: "الأيام 1–30", fr: "Jours 1–30" },
     title: { en: "Data Structuring", ar: "هيكلة البيانات", fr: "Structuration des données" },
@@ -101,7 +137,7 @@ export const pr3538746Validation: ValidationPhase[] = [
   },
   {
     window: { en: "Days 61–90", ar: "الأيام 61–90", fr: "Jours 61–90" },
-    title: { en: "MVP Review", ar: "مراجعة الـ MVP", fr: "Examen du MVP" },
+    title: { en: "Demonstrator Review", ar: "مراجعة النموذج", fr: "Examen du démonstrateur" },
     items: [
       {
         en: "Produce initial Target Book",

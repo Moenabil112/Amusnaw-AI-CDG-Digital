@@ -8,7 +8,7 @@ export const navItems: NavItem[] = [
   { id: "cdg-entry", label: { en: "CDG Entry", ar: "دخول CDG", fr: "Entrée CDG" } },
   { id: "products", label: { en: "Products", ar: "المنتجات", fr: "Produits" } },
   { id: "isseksi", label: { en: "Isseksi", ar: "Isseksi", fr: "Isseksi" } },
-  { id: "pr3538746", label: { en: "PR3538746", ar: "PR3538746", fr: "PR3538746" } },
+  { id: "aguelmous", label: { en: "Aguelmous", ar: "أگلموس", fr: "Aguelmous" } },
   { id: "hyrion", label: { en: "HYRION", ar: "HYRION", fr: "HYRION" } },
   { id: "qassas", label: { en: "QASSAS", ar: "QASSAS", fr: "QASSAS" } },
   { id: "documents", label: { en: "Documents", ar: "المستندات", fr: "Documents" } },

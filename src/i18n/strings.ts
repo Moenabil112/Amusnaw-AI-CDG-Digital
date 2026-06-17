@@ -33,8 +33,8 @@ export const S = {
     },
     reviewCdg: {
       en: "Review CDG Entry",
-      ar: "مراجعة دخول CDG",
-      fr: "Examiner l'entrée de la CDG",
+      ar: "مراجعة الدخول الاستراتيجي CDG",
+      fr: "Examiner l'entrée stratégique CDG",
     },
     viewProducts: {
       en: "View Launch Products",
@@ -65,7 +65,7 @@ export const S = {
   },
 
   cdg: {
-    eyebrow: { en: "CDG Strategic Entry", ar: "الدخول الاستراتيجي لـ CDG", fr: "Entrée stratégique de la CDG" },
+    eyebrow: { en: "CDG Strategic Entry", ar: "الدخول الاستراتيجي CDG", fr: "Entrée stratégique CDG" },
     title: {
       en: "CDG is invited as a strategic co-builder — not a passive financier.",
       ar: "تُدعى CDG كشريك مؤسس استراتيجي — وليس كممول سلبي.",
@@ -139,20 +139,46 @@ export const S = {
     },
   },
 
-  pr: {
+  aguelmous: {
     eyebrow: {
-      en: "Product 02 — R&D / MVP Demonstrator",
-      ar: "المنتج 02 — نموذج بحث وتطوير / MVP",
-      fr: "Produit 02 — Démonstrateur R&D / MVP",
+      en: "Product 02 — Geospatial Demonstrator",
+      ar: "المنتج 02 — نموذج جيومكاني",
+      fr: "Produit 02 — Démonstrateur géospatial",
     },
-    type: {
-      en: "R&D-ready Smart Exploration MVP",
-      ar: "نموذج MVP للاستكشاف الذكي جاهز للبحث والتطوير",
-      fr: "MVP d'exploration intelligente prêt pour la R&D",
+    subtitle: {
+      en: "AI-assisted fault-controlled exploration MVP",
+      ar: "نموذج استكشاف بمساعدة الذكاء الاصطناعي للأهداف المرتبطة بالفوالق",
+      fr: "Démonstrateur d'exploration des failles assisté par IA",
     },
     qassasModules: { en: "QASSAS Modules", ar: "وحدات QASSAS", fr: "Modules QASSAS" },
     expectedOutputs: { en: "Expected Outputs", ar: "المخرجات المتوقعة", fr: "Résultats attendus" },
-    requestReview: { en: "Request MVP Review", ar: "طلب مراجعة الـ MVP", fr: "Demander l'examen du MVP" },
+    requestReview: {
+      en: "Request Demonstrator Review",
+      ar: "طلب مراجعة النموذج",
+      fr: "Demander l'examen du démonstrateur",
+    },
+    mapPending: {
+      en: "GeoJSON layer pending controlled data import",
+      ar: "طبقة GeoJSON في انتظار استيراد بيانات مضبوطة",
+      fr: "Couche GeoJSON en attente d'import de données contrôlées",
+    },
+    regionContext: { en: "Region context", ar: "السياق الجهوي", fr: "Contexte régional" },
+    viewDetails: {
+      en: "View technical details",
+      ar: "عرض التفاصيل التقنية",
+      fr: "Voir les détails techniques",
+    },
+    hideDetails: {
+      en: "Hide technical details",
+      ar: "إخفاء التفاصيل التقنية",
+      fr: "Masquer les détails techniques",
+    },
+    mProduct: { en: "Product", ar: "المنتج", fr: "Produit" },
+    mPermit: { en: "Permit reference", ar: "مرجع الرخصة", fr: "Référence du permis" },
+    mRegion: { en: "Region", ar: "الجهة", fr: "Région" },
+    mContext: { en: "Context", ar: "السياق", fr: "Contexte" },
+    mType: { en: "Product type", ar: "نوع المنتج", fr: "Type de produit" },
+    mAccess: { en: "Access level", ar: "مستوى الوصول", fr: "Niveau d'accès" },
   },
 
   hyrion: {

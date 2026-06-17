@@ -120,10 +120,27 @@ export default function Header() {
                 {tt(item.label)}
               </a>
             ))}
+            {/* Language switcher (mobile) */}
+            <div className="col-span-2 mt-2 flex items-center gap-1 rounded-md border border-white/10 bg-white/5 p-1">
+              {LOCALES.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => setLocale(l.code)}
+                  aria-pressed={locale === l.code}
+                  className={`flex-1 rounded px-2 py-1.5 text-xs font-semibold transition-colors ${
+                    locale === l.code
+                      ? "bg-sand/20 text-sand"
+                      : "text-ivory/55 hover:text-ivory/80"
+                  }`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
             <a
               href="#access"
               onClick={() => setOpen(false)}
-              className="btn-primary col-span-2 mt-2"
+              className="btn-primary col-span-2 mt-1"
             >
               {tt(S.common.requestInstitutionalAccess)}
             </a>

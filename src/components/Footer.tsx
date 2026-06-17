@@ -33,7 +33,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ivory/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {entity.name}. {tt(entity.type)}.
+            © {year} {entity.legalName}. {tt(entity.legalType)}.
           </p>
           <p className="max-w-xl sm:text-end">{tt(S.footer.confidential)}</p>
         </div>

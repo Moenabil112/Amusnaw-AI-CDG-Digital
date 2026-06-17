@@ -30,7 +30,8 @@ It is a **controlled institutional digital window** — not a public website, fu
     │   ├── nav.ts
     │   ├── products.ts
     │   ├── isseksi.ts
-    │   ├── pr3538746.ts
+    │   ├── aguelmous.ts       # Aguelmous (PR3538746) demonstrator content + metadata
+    │   ├── aguelmousGeo.ts    # GeoJSON layer (null placeholder — no invented boundaries)
     │   ├── hyrionFunctions.ts
     │   ├── qassasModules.ts
     │   ├── strategicThesis.ts
@@ -45,7 +46,10 @@ It is a **controlled institutional digital window** — not a public website, fu
         ├── CDGEntry.tsx
         ├── LaunchProducts.tsx
         ├── IsseksiSection.tsx
-        ├── PR3538746Section.tsx
+        ├── AguelmousSection.tsx   # map-left / narrative-right + access-gated metadata drawer
+        ├── AguelmousMap.tsx       # lightweight SVG GeoJSON renderer + region-context placeholder
+        ├── Tilt.tsx               # desktop-only 3D card tilt (disabled on touch / reduced-motion)
+        ├── ScrollProgress.tsx     # scroll-progress indicator
         ├── HyrionSection.tsx
         ├── QassasSection.tsx
         ├── Roadmap.tsx
@@ -108,7 +112,9 @@ The Document Center renders cards, category filters, status/access badges, and a
 
 ## 4. How to update product cards
 
-Edit `src/data/products.ts`. Each product drives the **Launch Products** cards and links to its dedicated section. The deep sections pull copy from `src/data/isseksi.ts` and `src/data/pr3538746.ts` — edit those to change the feature cards, modules, outputs, and validation phases. No component code changes required.
+Edit `src/data/products.ts`. Each product drives the **Launch Products** cards and links to its dedicated section. The deep sections pull copy from `src/data/isseksi.ts` and `src/data/aguelmous.ts` — edit those to change the feature cards, modules, outputs, validation phases, and Aguelmous map metadata. No component code changes required.
+
+**Aguelmous map / GeoJSON:** there is no verified GeoJSON for permit PR3538746 in the repo or source package, so the map renders a region-context placeholder marked *"GeoJSON layer pending controlled data import"* — no boundaries are invented. To activate the real layer, drop the controlled `FeatureCollection` into `src/data/aguelmousGeo.ts` (assign `aguelmousGeoJson`); `AguelmousMap.tsx` already projects Polygon/MultiPolygon/Point/LineString geometry into its SVG viewbox — no component change needed. The permit number appears only in the access-gated metadata drawer / detail badge.
 
 ---
 
