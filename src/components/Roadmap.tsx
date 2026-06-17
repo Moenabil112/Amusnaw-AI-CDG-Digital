@@ -7,10 +7,7 @@ import { S } from "../i18n/strings";
 export default function Roadmap() {
   const tt = useT();
   return (
-    <section
-      id="roadmap"
-      className="border-t border-white/5 bg-graphite-800/30 py-20 sm:py-28"
-    >
+    <section id="roadmap" className="section bg-graphite-900/40">
       <div className="container-px">
         <Reveal>
           <SectionTitle

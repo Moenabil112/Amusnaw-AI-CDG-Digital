@@ -1,101 +1,130 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, FileText, Boxes } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import { entity, heroBadges } from "../data/entity";
 import { useT } from "../i18n";
 import { S } from "../i18n/strings";
 
 export default function Hero() {
   const tt = useT();
+  const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  // Subtle parallax: background drifts/fades as the hero scrolls away.
-  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const fade = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
     <section
       id="overview"
       ref={ref}
-      className="relative overflow-hidden pt-[120px] pb-20 sm:pt-[150px] sm:pb-28"
+      className="relative flex min-h-[88vh] items-center overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32"
     >
-      {/* Parallax engineering grid + copper/forest seams */}
+      {/* Layered, quiet background: grid + contour + copper glow */}
       <motion.div
-        style={{ y: gridY, opacity: fade }}
-        className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:48px_48px] opacity-40"
-      />
-      <motion.div
-        style={{ opacity: fade }}
-        className="pointer-events-none absolute -end-32 top-10 h-72 w-72 rounded-full bg-copper/10 blur-3xl"
-      />
-      <motion.div
-        style={{ opacity: fade }}
-        className="pointer-events-none absolute -start-24 top-40 h-72 w-72 rounded-full bg-forest/20 blur-3xl"
-      />
+        style={reduce ? undefined : { y: bgY, opacity: fade }}
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-grid-faint [background-size:54px_54px] opacity-[0.35]" />
+        <svg
+          className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-[0.18]"
+          viewBox="0 0 1440 400"
+          preserveAspectRatio="none"
+        >
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <path
+              key={i}
+              d={`M0,${230 + i * 26} C360,${170 + i * 22} 1080,${
+                300 + i * 18
+              } 1440,${200 + i * 24}`}
+              fill="none"
+              stroke="rgba(201,164,106,0.5)"
+              strokeWidth="1"
+            />
+          ))}
+        </svg>
+        <div className="absolute -end-40 top-0 h-96 w-96 rounded-full bg-copper/10 blur-[120px]" />
+        <div className="absolute -start-32 top-1/3 h-96 w-96 rounded-full bg-forest/20 blur-[130px]" />
+      </motion.div>
 
-      <motion.div style={{ y: contentY }} className="container-px relative">
+      <motion.div
+        style={reduce ? undefined : { y: contentY }}
+        className="container-wide relative"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduce ? false : { opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl"
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sand/30 bg-sand/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-sand">
+          <div className="kicker mb-7 rounded-full border border-sand/25 bg-sand/[0.07] px-4 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-sand" />
             {tt(S.hero.badge)}
           </div>
 
-          {/* Brand is the title; AI/SA live in the muted legal line below. */}
-          <h1 className="font-heading text-6xl font-extrabold leading-[0.95] tracking-tight text-ivory sm:text-7xl md:text-8xl">
+          {/* Brand is the title; AI/SA live in the muted descriptor line */}
+          <h1 className="text-hero font-extrabold text-ivory-100">
             {entity.brandName}
           </h1>
-          <p className="mt-3 text-lg font-semibold text-sand sm:text-2xl">
-            {tt(entity.displayDescriptor)}
-          </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-ivory/45 sm:text-sm">
+          <p className="mt-5 text-sm font-medium uppercase tracking-[0.18em] text-sand-300 sm:text-base">
             {tt(entity.heroLegalLine)}
           </p>
 
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ivory/80 sm:text-xl">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory-100/85 sm:text-2xl sm:leading-relaxed">
             {tt(entity.heroMessage)}
           </p>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-ivory/55">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-ivory-300/65">
             {tt(entity.heroProof)}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href="#cdg-entry" className="btn-primary">
-              {tt(S.hero.reviewCdg)} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <a href="#thesis" className="btn-primary w-full sm:w-auto">
+              {tt(S.hero.explore)}{" "}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
             </a>
-            <a href="#products" className="btn-secondary">
-              <Boxes className="h-4 w-4" /> {tt(S.hero.viewProducts)}
-            </a>
-            <a href="#access" className="btn-ghost">
-              <FileText className="h-4 w-4" />{" "}
-              {tt(S.common.requestInstitutionalAccess)}
+            <a href="#cdg-entry" className="link-quiet">
+              {tt(S.hero.reviewCdg)}
+              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-2.5">
+          {/* Quiet status chips (not a KPI dashboard) */}
+          <div className="mt-12 flex flex-wrap gap-2">
             {heroBadges.map((b) => (
-              <div
+              <span
                 key={b.label.en}
-                className={`rounded-lg border px-3.5 py-2 text-xs font-medium sm:text-sm ${
+                className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
                   b.emphasis
-                    ? "border-copper/40 bg-copper/10 text-copper"
-                    : "border-white/10 bg-white/5 text-ivory/70"
+                    ? "border-copper/35 bg-copper/[0.08] text-copper-400"
+                    : "border-white/[0.08] bg-white/[0.03] text-ivory-300/65"
                 }`}
               >
                 {tt(b.label)}
-              </div>
+              </span>
             ))}
           </div>
         </motion.div>
       </motion.div>
+
+      {/* scroll affordance */}
+      {!reduce && (
+        <motion.div
+          style={{ opacity: fade }}
+          className="pointer-events-none absolute inset-x-0 bottom-8 flex justify-center text-ivory-300/40"
+          aria-hidden="true"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowDown className="h-5 w-5" />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }

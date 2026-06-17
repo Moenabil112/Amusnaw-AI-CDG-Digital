@@ -10,20 +10,22 @@
   html {
     scroll-behavior: smooth;
     /* Offset for sticky header when navigating to anchors */
-    scroll-padding-top: 96px;
+    scroll-padding-top: 104px;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-graphite-900 text-ivory font-body antialiased;
+    @apply bg-graphite-950 text-ivory-100 font-body antialiased;
+    line-height: 1.6;
     background-image:
       radial-gradient(
-        circle at 15% -10%,
-        rgba(184, 115, 51, 0.12),
-        transparent 45%
+        circle at 12% -8%,
+        rgba(184, 115, 51, 0.1),
+        transparent 42%
       ),
       radial-gradient(
-        circle at 90% 0%,
-        rgba(31, 58, 50, 0.25),
+        circle at 92% 2%,
+        rgba(31, 58, 50, 0.22),
         transparent 40%
       );
     background-attachment: fixed;
@@ -35,54 +37,122 @@
   h4,
   h5 {
     @apply font-heading;
+    text-wrap: balance;
   }
 
-  /* Trilingual-ready: when the document is set to Arabic, switch direction + font */
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Trilingual: Arabic switches direction, font, and a looser line-height */
   html[dir="rtl"] body {
     @apply font-arabic;
+    line-height: 1.9;
+  }
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4 {
+    @apply font-arabic;
+    line-height: 1.5;
   }
 
   ::selection {
     background: rgba(201, 164, 106, 0.3);
-    color: #f3efe7;
+    color: #f4f0e8;
+  }
+
+  /* Visible, consistent keyboard focus */
+  :focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #090a0a,
+      0 0 0 4px rgba(201, 164, 106, 0.6);
+    border-radius: 6px;
   }
 }
 
 @layer components {
+  /* ---- Containers ---- */
   .container-px {
     @apply mx-auto w-full max-w-content px-5 sm:px-8;
   }
-
-  .hairline {
-    @apply border-white/10;
+  .container-wide {
+    @apply mx-auto w-full max-w-wide px-5 sm:px-8;
+  }
+  .measure {
+    @apply max-w-text;
   }
 
+  /* ---- Section rhythm ---- */
+  .section {
+    @apply border-t border-white/[0.06];
+    padding-top: var(--section-pad, clamp(4.5rem, 9vw, 8rem));
+    padding-bottom: var(--section-pad, clamp(4.5rem, 9vw, 8rem));
+  }
+
+  /* ---- Surfaces ---- */
   .panel {
-    @apply rounded-xl border border-white/10 bg-graphite-800/60 backdrop-blur-sm;
+    @apply rounded-2xl border border-white/[0.08] bg-graphite-800/55 shadow-card backdrop-blur-sm;
   }
-
   .panel-hover {
-    @apply transition-all duration-300 hover:border-sand/40 hover:bg-graphite-700/60;
+    @apply transition-all duration-300 hover:border-sand/30 hover:bg-graphite-700/55 hover:shadow-glow;
+  }
+  .glass {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.045] backdrop-blur-md;
+  }
+  .hairline {
+    @apply border-white/[0.08];
   }
 
+  /* ---- Type helpers ---- */
+  .kicker {
+    @apply inline-flex items-center gap-2 text-kicker font-semibold uppercase text-sand-300/90;
+  }
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-[0.22em] text-sand;
   }
 
+  /* ---- Buttons (min 44px touch target) ---- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sand/60;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200;
   }
-
   .btn-primary {
-    @apply btn bg-copper text-ivory hover:bg-copper/90;
+    @apply btn bg-copper text-ivory-100 shadow-[0_10px_30px_-12px_rgba(184,115,51,0.6)] hover:bg-copper-400;
   }
-
   .btn-secondary {
-    @apply btn border border-sand/40 bg-transparent text-ivory hover:border-sand hover:bg-sand/10;
+    @apply btn border border-sand/35 bg-transparent text-ivory-100 hover:border-sand hover:bg-sand/10;
   }
-
   .btn-ghost {
-    @apply btn border border-white/10 bg-white/5 text-ivory/90 hover:border-white/30 hover:bg-white/10;
+    @apply btn border border-white/10 bg-white/[0.04] text-ivory-100/90 hover:border-white/25 hover:bg-white/[0.08];
+  }
+  .link-quiet {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-ivory-300/80 underline-offset-4 transition-colors hover:text-sand hover:underline;
+  }
+}
+
+@layer utilities {
+  .text-hero {
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .text-section {
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Respect reduced-motion: neutralise transforms/animations globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -92,12 +162,12 @@
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: #090a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #242927;
   border-radius: 999px;
-  border: 2px solid #0b0b0b;
+  border: 2px solid #090a0a;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #4a4a3d;

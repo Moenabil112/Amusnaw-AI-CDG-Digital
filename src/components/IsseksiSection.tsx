@@ -10,10 +10,7 @@ import { S } from "../i18n/strings";
 export default function IsseksiSection() {
   const tt = useT();
   return (
-    <section
-      id="isseksi"
-      className="border-t border-white/5 bg-graphite-800/30 py-20 sm:py-28"
-    >
+    <section id="isseksi" className="section bg-graphite-900/40">
       <div className="container-px">
         <Reveal>
           <div className="mb-4 flex flex-wrap items-center gap-2">

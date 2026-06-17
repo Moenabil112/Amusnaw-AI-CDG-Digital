@@ -11,10 +11,11 @@ import { S } from "../i18n/strings";
 export default function LaunchProducts() {
   const tt = useT();
   return (
-    <section id="products" className="border-t border-white/5 py-20 sm:py-28">
+    <section id="products" className="section">
       <div className="container-px">
         <Reveal>
           <SectionTitle
+            index="04"
             eyebrow={tt(S.products.eyebrow)}
             title={tt(S.products.title)}
             description={tt(S.products.description)}

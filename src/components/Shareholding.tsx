@@ -14,10 +14,7 @@ import { S } from "../i18n/strings";
 export default function Shareholding() {
   const tt = useT();
   return (
-    <section
-      id="shareholding"
-      className="border-t border-white/5 py-20 sm:py-28"
-    >
+    <section id="shareholding" className="section">
       <div className="container-px">
         <Reveal>
           <SectionTitle

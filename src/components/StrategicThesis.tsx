@@ -13,10 +13,11 @@ import { S } from "../i18n/strings";
 export default function StrategicThesis() {
   const tt = useT();
   return (
-    <section id="thesis" className="border-t border-white/5 py-20 sm:py-28">
+    <section id="thesis" className="section">
       <div className="container-px">
         <Reveal>
           <SectionTitle
+            index="02"
             eyebrow={tt(S.thesis.eyebrow)}
             title={
               <>

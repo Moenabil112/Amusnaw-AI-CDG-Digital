@@ -36,6 +36,11 @@ export const S = {
       ar: "مراجعة الدخول الاستراتيجي CDG",
       fr: "Examiner l'entrée stratégique CDG",
     },
+    explore: {
+      en: "Explore the Institutional Window",
+      ar: "استكشف النافذة المؤسسية",
+      fr: "Explorer la fenêtre institutionnelle",
+    },
     viewProducts: {
       en: "View Launch Products",
       ar: "عرض منتجات الإطلاق",
@@ -162,6 +167,11 @@ export const S = {
       ar: "طبقة معلّم عامة مبسّطة · GeoJSON",
       fr: "Couche de repère public · GeoJSON",
     },
+    mapCaption: {
+      en: "Public-lite geospatial context layer",
+      ar: "طبقة سياق جيومكاني عامة مبسّطة",
+      fr: "Couche de contexte géospatial public",
+    },
     boundaryNote: {
       en: "Legal boundary polygon not included; public-lite marker/context layer used.",
       ar: "لم يُدرَج مضلّع الحدود القانونية؛ تُستخدم طبقة معلّم/سياق عامة مبسّطة.",
@@ -248,6 +258,47 @@ export const S = {
       en: "From incorporation to a CDG scale decision in six months",
       ar: "من التأسيس إلى قرار التوسع مع CDG في ستة أشهر",
       fr: "De la constitution à une décision d'échelle de la CDG en six mois",
+    },
+  },
+
+  numbers: {
+    eyebrow: { en: "Institutional Entry Logic", ar: "منطق الدخول المؤسسي", fr: "Logique d'entrée institutionnelle" },
+    title: {
+      en: "A disciplined, staged commitment — read after the proof, not before it",
+      ar: "التزام منضبط ومرحلي — يُقرأ بعد الإثبات لا قبله",
+      fr: "Un engagement discipliné et échelonné — à lire après la preuve, non avant",
+    },
+    seedLabel: { en: "Seed Infrastructure Commitment", ar: "التزام Seed لبناء البنية التحتية", fr: "Engagement Seed d'infrastructure" },
+    seedExplain: {
+      en: "To build the company and productize the two launch products.",
+      ar: "لبناء الشركة وتحويل منتجَي الإطلاق إلى منتجات.",
+      fr: "Pour bâtir la société et produire les deux produits de lancement.",
+    },
+    positionLabel: { en: "Proposed CDG Position", ar: "الحصة المقترحة لـ CDG", fr: "Position proposée de la CDG" },
+    positionExplain: {
+      en: "CDG enters as strategic co-builder, not passive financier.",
+      ar: "تدخل CDG كشريك بناء استراتيجي، لا كممول سلبي.",
+      fr: "La CDG entre comme co-bâtisseur stratégique, non comme financier passif.",
+    },
+    deliveryLabel: { en: "Delivery Window", ar: "نافذة التسليم", fr: "Fenêtre de livraison" },
+    deliveryValue: { en: "6 months", ar: "6 أشهر", fr: "6 mois" },
+    deliveryExplain: {
+      en: "From incorporation to a CDG scale decision.",
+      ar: "من التأسيس إلى قرار التوسع مع CDG.",
+      fr: "De la constitution à une décision d'échelle de la CDG.",
+    },
+    stepupLabel: { en: "Step-Up Pathway", ar: "مسار الاستحواذ التدريجي", fr: "Parcours d'acquisition progressive" },
+    stepupValue: { en: "51% / 85%", ar: "51% / 85%", fr: "51 % / 85 %" },
+    stepupExplain: {
+      en: "Optional increase at month 18, then up to month 36.",
+      ar: "زيادة اختيارية في الشهر 18، ثم حتى الشهر 36.",
+      fr: "Augmentation optionnelle au mois 18, puis jusqu'au mois 36.",
+    },
+    continuityLabel: { en: "Founder Continuity", ar: "استمرارية المؤسس", fr: "Continuité du fondateur" },
+    continuityExplain: {
+      en: "Strategic continuity stake preserved through any step-up.",
+      ar: "حصة استمرارية استراتيجية محفوظة عبر أي استحواذ تدريجي.",
+      fr: "Participation de continuité stratégique préservée à chaque étape.",
     },
   },
 

@@ -37,7 +37,7 @@ export default function AguelmousSection() {
   ];
 
   return (
-    <section id="aguelmous" className="border-t border-white/5 py-20 sm:py-28">
+    <section id="aguelmous" className="section">
       <div className="container-px">
         <Reveal>
           <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -45,6 +45,7 @@ export default function AguelmousSection() {
             <AccessBadge access="nda" />
           </div>
           <SectionTitle
+            index="05"
             eyebrow={tt(S.aguelmous.eyebrow)}
             title="Aguelmous Smart Fault Demonstrator"
             description={tt(S.aguelmous.subtitle)}

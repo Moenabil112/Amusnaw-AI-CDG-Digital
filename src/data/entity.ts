@@ -41,11 +41,11 @@ export const entity = {
   seedCommitment: "USD 350,000",
   strategicPartner: "CDG",
 
-  /** Muted legal+AI line under the hero brand. */
+  /** Muted legal+AI descriptor line under the hero brand. */
   heroLegalLine: {
-    en: "Proposed Moroccan SA · AI-powered strategic mineral intelligence",
-    ar: "شركة مغربية مقترحة بصيغة SA · ذكاء اصطناعي لاستخبارات المعادن الاستراتيجية",
-    fr: "SA marocaine proposée · Intelligence minière stratégique assistée par IA",
+    en: "AI-powered Mining-Tech · Proposed Moroccan SA",
+    ar: "تقنية تعدين مدعومة بالذكاء الاصطناعي · شركة مغربية مقترحة بصيغة SA",
+    fr: "Mining-Tech assisté par IA · SA marocaine proposée",
   } satisfies LocalizedText,
   /** Hero main message. */
   heroMessage: {

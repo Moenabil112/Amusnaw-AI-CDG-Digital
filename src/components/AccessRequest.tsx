@@ -75,12 +75,13 @@ export default function AccessRequest() {
     "mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ivory/55";
 
   return (
-    <section id="access" className="border-t border-white/5 py-20 sm:py-28">
+    <section id="access" className="section">
       <div className="container-px">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
             <div>
               <SectionTitle
+                index="10"
                 eyebrow={tt(S.access.eyebrow)}
                 title={tt(S.access.title)}
               />

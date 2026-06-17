@@ -9,6 +9,7 @@ import IsseksiSection from "./components/IsseksiSection";
 import AguelmousSection from "./components/AguelmousSection";
 import HyrionSection from "./components/HyrionSection";
 import QassasSection from "./components/QassasSection";
+import NumbersSection from "./components/NumbersSection";
 import Roadmap from "./components/Roadmap";
 import Shareholding from "./components/Shareholding";
 import DocumentCenter from "./components/DocumentCenter";
@@ -31,6 +32,7 @@ export default function App() {
           <AguelmousSection />
           <HyrionSection />
           <QassasSection />
+          <NumbersSection />
           <Roadmap />
           <Shareholding />
           <DocumentCenter />

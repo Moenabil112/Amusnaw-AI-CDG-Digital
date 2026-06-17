@@ -91,8 +91,14 @@ export default function AguelmousMap() {
 
   return (
     <div className="panel relative overflow-hidden">
-      <div className="absolute start-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-sand/30 bg-graphite-900/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-sand backdrop-blur">
-        <Layers className="h-3 w-3" /> {aguelmous.region}
+      {/* Premium framed header */}
+      <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] px-4 py-3">
+        <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-ivory-300/60">
+          <Layers className="h-3.5 w-3.5 text-sand" /> {tt(S.aguelmous.mapCaption)}
+        </span>
+        <span className="rounded-full border border-sand/25 bg-sand/[0.07] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-sand">
+          {aguelmous.region}
+        </span>
       </div>
 
       <svg

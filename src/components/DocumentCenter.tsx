@@ -35,13 +35,11 @@ export default function DocumentCenter() {
     f === "All" ? tt(S.documents.all) : tt(documentCategoryLabels[f]);
 
   return (
-    <section
-      id="documents"
-      className="border-t border-white/5 bg-graphite-800/30 py-20 sm:py-28"
-    >
+    <section id="documents" className="section bg-graphite-900/40">
       <div className="container-px">
         <Reveal>
           <SectionTitle
+            index="09"
             eyebrow={tt(S.documents.eyebrow)}
             title={tt(S.documents.title)}
             description={tt(S.documents.description)}

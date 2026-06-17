@@ -67,6 +67,8 @@ It is a **controlled institutional digital window** — not a public website, fu
 
 **Stack:** React 18 · TypeScript · Vite 5 · Tailwind CSS 3 · Framer Motion · Lucide React. Frontend-only (no backend in v0.1).
 
+**Design system.** Tokens live in `tailwind.config.js` (graphite 950–600, sand 300–500, copper 400–600, forest 700–900, ivory 100/300, muted; fluid `text-hero`/`text-section`/`text-kicker`; `max-w-content/text/wide`; `shadow-card/glow`). Primitives live in `src/index.css` under `@layer components`: `.section` (fluid vertical rhythm + hairline), `.panel` / `.glass` surfaces, `.btn-*` (44px min target), `.kicker`, `.link-quiet`, container helpers, visible `:focus-visible`, and a global `prefers-reduced-motion` reset. Section headings use `<SectionTitle index="NN" …>` for the scrollytelling chapter rail; motion is centralised in `Reveal` (reduced-motion aware), `Tilt` (desktop-only), and `ScrollProgress`.
+
 ---
 
 ## 2. Run locally

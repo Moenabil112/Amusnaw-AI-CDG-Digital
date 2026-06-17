@@ -12,10 +12,11 @@ import { S } from "../i18n/strings";
 export default function QassasSection() {
   const tt = useT();
   return (
-    <section id="qassas" className="border-t border-white/5 py-20 sm:py-28">
+    <section id="qassas" className="section">
       <div className="container-px">
         <Reveal>
           <SectionTitle
+            index="07"
             eyebrow={tt(S.qassas.eyebrow)}
             title={tt(S.qassas.title)}
             description={tt(qassasPositioning)}

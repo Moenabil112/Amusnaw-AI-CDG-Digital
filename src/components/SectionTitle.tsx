@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 type Props = {
+  /** Chapter index, e.g. "04" */
+  index?: string;
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
@@ -8,6 +10,7 @@ type Props = {
 };
 
 export default function SectionTitle({
+  index,
   eyebrow,
   title,
   description,
@@ -17,16 +20,27 @@ export default function SectionTitle({
     <div
       className={
         align === "center"
-          ? "mx-auto max-w-3xl text-center"
-          : "max-w-3xl text-left"
+          ? "mx-auto max-w-text text-center"
+          : "max-w-text text-left"
       }
     >
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h2 className="text-2xl font-bold leading-tight tracking-tight text-ivory sm:text-3xl md:text-4xl">
-        {title}
-      </h2>
+      {eyebrow && (
+        <p className="kicker mb-4">
+          {index && (
+            <>
+              <span className="text-sand/60">{index}</span>
+              <span
+                aria-hidden="true"
+                className="inline-block h-px w-6 bg-sand/30 align-middle"
+              />
+            </>
+          )}
+          {eyebrow}
+        </p>
+      )}
+      <h2 className="text-section font-bold text-ivory-100">{title}</h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-ivory/70">
+        <p className="mt-5 text-base leading-relaxed text-ivory-300/75 sm:text-lg">
           {description}
         </p>
       )}

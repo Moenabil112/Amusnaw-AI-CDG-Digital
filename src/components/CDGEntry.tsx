@@ -8,15 +8,13 @@ import { S } from "../i18n/strings";
 export default function CDGEntry() {
   const tt = useT();
   return (
-    <section
-      id="cdg-entry"
-      className="border-t border-white/5 bg-graphite-800/30 py-20 sm:py-28"
-    >
+    <section id="cdg-entry" className="section bg-graphite-900/40">
       <div className="container-px">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div>
               <SectionTitle
+                index="03"
                 eyebrow={tt(S.cdg.eyebrow)}
                 title={tt(S.cdg.title)}
               />
